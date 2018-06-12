@@ -1,0 +1,10 @@
+/node_modules
+/task-manager-ui-2/node_modules
+/node-rest-api/node_modules
+bundle.js
+npm-debug.log
+.DS_Store
+
+# IntelliJ
+*.iml
+/.idea

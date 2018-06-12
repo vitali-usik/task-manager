@@ -3,8 +3,21 @@ header {
   background-image: url(../assets/tm-header.jpg);
   background-position: 0 40%;
   background-size: cover;
+  border-radius: 20px;
 }
 
+/* navigation */
+nav {
+  padding: 10px 0;
+  display: flex !important;
+  justify-content: center;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+/* common */
 h3 {
   padding-top: 20px;
 }

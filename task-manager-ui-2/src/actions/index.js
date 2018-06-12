@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const FETCH_TASKS = 'FETCH_TASKS';
+export const CREATE_TASK = 'CREATE_TASK';
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
 export const FETCH_POST = 'fetch_post';
@@ -25,19 +26,29 @@ export function fetchTasks() {
   };
 }
 
-export function fetchPosts() {
-  const request = axios.get(
-    `http://localhost:3003/tasks`,
-    {
-      proxy: {
-        host: '127.0.0.1',
-        port: 3003,
-      },
-    }
-  );
+// export function fetchPosts() {
+//   const request = axios.get(
+//     `http://localhost:3003/tasks`,
+//     {
+//       proxy: {
+//         host: '127.0.0.1',
+//         port: 3003,
+//       },
+//     }
+//   );
+//
+//   return {
+//     type: FETCH_POSTS,
+//     payload: request
+//   };
+// }
+
+export function createTask(values, callback) {
+  const request = axios.post(`http://localhost:3003/tasks`, values)
+    .then(() => callback() );
 
   return {
-    type: FETCH_POSTS,
+    type: CREATE_TASK,
     payload: request
   };
 }

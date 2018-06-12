@@ -7,6 +7,9 @@ import reducers from './reducers';
 import promise from 'redux-promise';
 
 import TasksIndex from './screens/tasks_index';
+
+import Navigation from './components/navigation';
+import TasksNew from './screens/tasks_new';
 import PostsNew from './components/posts_new';
 import PostsShow from './components/post_show';
 
@@ -18,9 +21,11 @@ ReactDOM.render(
       <header/>
       <BrowserRouter>
         <div>
+          <Navigation />
           <Switch>
             <Route path="/posts/new" component={ PostsNew } />
             <Route path="/posts/:id" component={ PostsShow } />
+            <Route path="/tasks/new" component={ TasksNew } />
             <Route path="/" component={ TasksIndex } />
           </Switch>
         </div>

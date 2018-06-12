@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+export const FETCH_TASKS = 'FETCH_TASKS';
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
 export const FETCH_POST = 'fetch_post';
@@ -8,9 +9,25 @@ export const DELETE_POST = 'delete_post';
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=borodatos';
 
+export function fetchTasks() {
+  const request = axios.get(
+    `http://localhost:3003/tasks`,
+    {
+      proxy: {
+        host: '127.0.0.1',
+        port: 3003,
+      },
+    });
+
+  return {
+    type: FETCH_TASKS,
+    payload: request
+  };
+}
+
 export function fetchPosts() {
   const request = axios.get(
-    `http://localhost:3003/products`,
+    `http://localhost:3003/tasks`,
     {
       proxy: {
         host: '127.0.0.1',

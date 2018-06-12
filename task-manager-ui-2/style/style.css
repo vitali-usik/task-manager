@@ -1,3 +1,34 @@
+header {
+  height: 300px;
+  background-image: url(../assets/tm-header.jpg);
+  background-position: 0 40%;
+  background-size: cover;
+}
+
+h3 {
+  padding-top: 20px;
+}
+
 form a {
   margin-left: 5px;
+}
+
+table {
+  width: 100%;
+}
+
+.taskTableIndex {
+  width: 5%;
+}
+
+.taskTableName {
+  width: 30%;
+}
+
+.taskTableDesc {
+  width: 55%;
+}
+
+.taskTablePriority {
+  width: 10%;
 }

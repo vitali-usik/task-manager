@@ -1,5 +1,6 @@
 /node_modules
 /task-manager-ui-2/node_modules
+/task-manager-ui-2/coverage
 /node-rest-api/node_modules
 bundle.js
 npm-debug.log
@@ -8,3 +9,5 @@ npm-debug.log
 # IntelliJ
 *.iml
 /.idea
+
+*.nyc_output

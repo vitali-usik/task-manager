@@ -14,11 +14,6 @@ export default function Navigation() {
           Add new
         </Link>
       </div>
-      <div className="nav-item text-xs-left">
-        <Link className="btn btn-primary" to={`/posts/new`}>
-          Add new 3
-        </Link>
-      </div>
     </nav>
   );
 }

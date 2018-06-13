@@ -13,13 +13,20 @@ class TasksIndex extends Component {
     return Object.keys(this.props.tasks).map((item, index)=> {
       return (
         <tr key={index}>
-          {/*<Link to={`/posts/${post.id}`}>*/}
-            {/*{ post.title }*/}
-          {/*</Link>*/}
           <td className="taskTableIndex">{index + 1}</td>
           <td className="taskTableName">{this.props.tasks[item].task_name}</td>
           <td className="taskTableDesc">{this.props.tasks[item].task_desc}</td>
           <td className="taskTablePriority">{this.props.tasks[item].task_priority}</td>
+          <td className="taskTableCtrl">
+            <Link className="btn btn-info" to={`/tasks/${this.props.tasks[item]._id}`}>
+              Show
+            </Link>
+          </td>
+          <td className="taskTableCtrl">
+            <Link className="btn btn-danger" to={`/tasks/${this.props.tasks[item]._id}`}>
+              Delete
+            </Link>
+          </td>
         </tr>
       );
     });
@@ -28,11 +35,6 @@ class TasksIndex extends Component {
   render() {
     return (
       <div>
-        {/*<div className="text-xs-right">*/}
-          {/*<Link className="btn btn-primary" to="/posts/new">*/}
-            {/*Add a Post*/}
-          {/*</Link>*/}
-        {/*</div>*/}
         <h3>Tasks</h3>
 
         <table className="table">
@@ -42,6 +44,8 @@ class TasksIndex extends Component {
               <th>Name</th>
               <th>Description</th>
               <th>Priority</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>

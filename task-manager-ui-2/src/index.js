@@ -10,6 +10,7 @@ import TasksIndex from './screens/tasks_index';
 
 import Navigation from './components/navigation';
 import TasksNew from './screens/tasks_new';
+import TaskShow from './screens/task_show';
 import PostsNew from './components/posts_new';
 import PostsShow from './components/post_show';
 
@@ -26,6 +27,7 @@ ReactDOM.render(
             <Route path="/posts/new" component={ PostsNew } />
             <Route path="/posts/:id" component={ PostsShow } />
             <Route path="/tasks/new" component={ TasksNew } />
+            <Route path="/tasks/:id" component={ TaskShow } />
             <Route path="/" component={ TasksIndex } />
           </Switch>
         </div>

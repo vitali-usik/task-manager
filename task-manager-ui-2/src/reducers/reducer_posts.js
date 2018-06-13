@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { FETCH_TASKS, FETCH_POSTS, FETCH_POST, DELETE_POST } from '../actions';
+import { FETCH_TASKS, FETCH_TASK, FETCH_POSTS, FETCH_POST, DELETE_POST } from '../actions';
 
 export default function(state = {}, action) {
   
@@ -11,6 +11,8 @@ export default function(state = {}, action) {
       };
     case DELETE_POST:
       return _.omit(state, action.payload);
+    case FETCH_TASK:
+      return { ...state, [action.payload.data._id]: action.payload.data };
     case FETCH_POST:
       return { ...state, [action.payload.data.id]: action.payload.data };
     case FETCH_POSTS:

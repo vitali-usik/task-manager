@@ -5,19 +5,18 @@ import { fetchTask, deleteTask } from '../actions';
 
 class TaskShow extends Component {
   componentDidMount() {
-    // debugger
     if (!this.props.task) {
       const { id } = this.props.match.params;
       this.props.fetchTask(id);
     }
   }
 
-  // onDeleteClick() {
-  //   const { id } = this.props.match.params;
-  //   this.props.deleteTask(id, () => {
-  //     this.props.history.push('/');
-  //   });
-  // }
+  onDeleteClick() {
+    const { id } = this.props.match.params;
+    this.props.deleteTask(id, () => {
+      this.props.history.push('/');
+    });
+  }
 
   render() {
     const { task } = this.props;
@@ -28,23 +27,21 @@ class TaskShow extends Component {
 
     return (
       <div>
-        {/*<Link to="/" className="btn btn-primary">Back To Index</Link>*/}
-        {/*<button*/}
-          {/*className="btn btn-danger pull-xs-right"*/}
-          {/*onClick={this.onDeleteClick.bind(this)}>*/}
-          {/*Delete Post*/}
-        {/*</button>*/}
-        <h3>{ task.task_name }</h3>
-        <h6>Categories: { task.task_desc }</h6>
-        <p>{ task.task_priority }</p>
+        <Link to="/" className="btn btn-primary">Back To Index</Link>
+        <button
+          className="btn btn-danger pull-xs-right"
+          onClick={this.onDeleteClick.bind(this)}>
+          Delete Post
+        </button>
+        <h3>Task name: { task.task_name }</h3>
+        <h6>Description: { task.task_desc }</h6>
+        <p>Priority: { task.task_priority }</p>
       </div>
     );
   }
 }
 
 function mapStateToProps({ tasks }, ownProps) {
-  // debugger
-  console.log('tasks', tasks);
   return { task: tasks[ownProps.match.params.id] };
 }
 

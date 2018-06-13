@@ -2,12 +2,19 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchTasks } from '../actions';
+import { fetchTasks, deleteTask } from '../actions';
 
 class TasksIndex extends Component {
   componentDidMount() {
     this.props.fetchTasks();
   }
+
+  onDeleteClick = (id) => {
+    this.props.deleteTask(id, () => {
+      this.props.fetchTasks();
+      this.props.history.push('/');
+    });
+  };
 
   renderTasks() {
     return Object.keys(this.props.tasks).map((item, index)=> {
@@ -23,9 +30,11 @@ class TasksIndex extends Component {
             </Link>
           </td>
           <td className="taskTableCtrl">
-            <Link className="btn btn-danger" to={`/tasks/${this.props.tasks[item]._id}`}>
+            <button
+              className="btn btn-danger"
+              onClick={() => this.onDeleteClick.bind(this)(this.props.tasks[item]._id) } >
               Delete
-            </Link>
+            </button>
           </td>
         </tr>
       );
@@ -61,4 +70,4 @@ function mapStateToProps(state) {
   return { tasks: state.tasks };
 }
 
-export default connect(mapStateToProps, { fetchTasks })(TasksIndex);
+export default connect(mapStateToProps, { fetchTasks, deleteTask })(TasksIndex);

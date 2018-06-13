@@ -1,11 +1,11 @@
 import { renderComponent , expect } from '../test_helper';
-import App from '../../src/components/app';
+import TasksIndex from '../../src/screens/tasks_index';
 
-describe('App' , () => {
+describe('TasksIndex' , () => {
   let component;
 
   beforeEach(() => {
-    component = renderComponent(App);
+    component = renderComponent(TasksIndex);
   });
 
   it('renders something', () => {

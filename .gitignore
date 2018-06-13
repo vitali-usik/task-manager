@@ -1,6 +1,7 @@
 /node_modules
 /task-manager-ui-2/node_modules
 /task-manager-ui-2/coverage
+/task-manager-ui-4/node_modules
 /node-rest-api/node_modules
 bundle.js
 npm-debug.log

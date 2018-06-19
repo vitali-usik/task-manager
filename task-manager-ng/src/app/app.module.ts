@@ -22,6 +22,10 @@ import { DevModuleModule } from './+dev-module';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import { PostsComponent } from './posts/posts.component';
+import { PostsService } from './services/posts.service';
+import { AbstractService } from './services/abstract.service';
+import { Http, HttpModule } from '@angular/http';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -44,6 +48,7 @@ interface StoreType {
     AppComponent,
     AboutComponent,
     HomeComponent,
+    PostsComponent,
     NoContentComponent,
     XLargeDirective
   ],
@@ -59,6 +64,7 @@ interface StoreType {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
     }),
+    // HttpModule,
 
     /**
      * This section will import the `DevModuleModule` only in certain build types.
@@ -72,7 +78,10 @@ interface StoreType {
    */
   providers: [
     environment.ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    PostsService,
+    AbstractService,
+    Http,
   ]
 })
 export class AppModule {}

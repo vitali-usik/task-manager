@@ -24,12 +24,13 @@
 // });
 
 import TasksIndex from '../../src/screens/tasks_index';
+import { renderComponent , expect } from '../../test/test_helper';
 
 describe('TasksIndex my code must work', () => {
   let component;
 
   beforeEach(() => {
-    component = new TasksIndex();
+    component = renderComponent(TasksIndex);
   });
 
   it ('should work', () => {
@@ -39,4 +40,20 @@ describe('TasksIndex my code must work', () => {
 
   })
 });
+
+// import { renderComponent , expect } from '../test_helper';
+// import TasksIndex from '../../src/screens/tasks_index';
+//
+// describe('TasksIndex' , () => {
+//   let component;
+//
+//   beforeEach(() => {
+//     component = renderComponent(TasksIndex);
+//   });
+//
+//   it('renders something', () => {
+//     expect(component).to.exist;
+//   });
+// });
+
 

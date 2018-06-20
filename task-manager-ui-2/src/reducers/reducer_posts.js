@@ -1,13 +1,38 @@
 import _ from 'lodash';
-import { FETCH_TASKS, FETCH_TASK, DELETE_TASK, FETCH_POSTS, FETCH_POST, DELETE_POST } from '../actions';
+import {
+  FETCH_TASKS,
+  FETCH_TASK,
+  DELETE_TASK,
+  FETCH_POSTS,
+  FETCH_POST,
+  DELETE_POST,
+  CREATE_USER,
+  FETCH_USERS,
+  LOGIN_USER,
+} from '../actions';
 
 export default function(state = {}, action) {
   
   switch (action.type) {
+    // case CREATE_USER:
+    //   debugger
+    //   return {
+    //     ...state,
+    //   };
+    case LOGIN_USER:
+      return {
+        ...state,
+        currentUser: action.payload,
+      };
+    case FETCH_USERS:
+      return {
+        ...state,
+        users: action.payload.data,
+      };
     case FETCH_TASKS:
       return {
         ...state,
-        ...action.payload.data,
+        tasks: action.payload.data,
       };
     case DELETE_POST:
       return _.omit(state, action.payload);

@@ -21,6 +21,12 @@ export default function Navigation() {
         </Link>
       </div>
 
+      <div className="nav-item text-xs-left">
+        <Link className="btn btn-primary" to={`/login`}>
+          Login
+        </Link>
+      </div>
+
     </nav>
   );
 }

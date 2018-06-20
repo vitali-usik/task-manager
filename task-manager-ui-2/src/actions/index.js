@@ -5,6 +5,8 @@ export const CREATE_TASK = 'CREATE_TASK';
 export const FETCH_TASK = 'FETCH_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 export const CREATE_USER = 'CREATE_USER';
+export const LOGIN_USER = 'LOGIN_USER';
+export const FETCH_USERS = 'FETCH_USERS';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
@@ -30,23 +32,6 @@ export function fetchTasks() {
   };
 }
 
-// export function fetchPosts() {
-//   const request = axios.get(
-//     `http://localhost:3003/tasks`,
-//     {
-//       proxy: {
-//         host: '127.0.0.1',
-//         port: 3003,
-//       },
-//     }
-//   );
-//
-//   return {
-//     type: FETCH_POSTS,
-//     payload: request
-//   };
-// }
-
 export function createTask(values, callback) {
   const request = axios.post(`http://localhost:3003/tasks`, values)
     .then(() => callback() );
@@ -63,6 +48,36 @@ export function createUser(values, callback) {
 
   return {
     type: CREATE_USER,
+    payload: request
+  };
+}
+
+export function loginUser(user) { //id, callback) {
+  // const request = axios.get(`http://localhost:3003/users/${id}`)
+  //   .then(() => callback());
+  //
+  // return {
+  //   type: LOGIN_USER,
+  //   payload: request
+  // };
+  return {
+    type: LOGIN_USER,
+    payload: user,
+  }
+}
+
+export function fetchUsers() {
+  const request = axios.get(
+    `http://localhost:3003/users`,
+    {
+      proxy: {
+        host: '127.0.0.1',
+        port: 3003,
+      },
+    });
+
+  return {
+    type: FETCH_USERS,
     payload: request
   };
 }

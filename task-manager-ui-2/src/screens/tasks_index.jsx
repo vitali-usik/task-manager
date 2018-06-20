@@ -17,6 +17,8 @@ class TasksIndex extends Component {
   };
 
   renderTasks() {
+    if (!this.props.tasks) { return; }
+
     return Object.keys(this.props.tasks).map((item, index)=> {
       return (
         <tr key={index}>
@@ -42,10 +44,13 @@ class TasksIndex extends Component {
   }
 
   render() {
+    // debugger
     return (
       <div>
         <h3>Tasks</h3>
-
+        {this.props.user && (
+          <h1>Hello {this.props.user.user_name}</h1>
+        )}
         <table className="table">
           <thead>
             <tr>
@@ -67,7 +72,7 @@ class TasksIndex extends Component {
 }
 
 function mapStateToProps(state) {
-  return { tasks: state.tasks };
+  return { tasks: state.tasks.tasks, user: state.tasks.currentUser };
 }
 
 export default connect(mapStateToProps, { fetchTasks, deleteTask })(TasksIndex);

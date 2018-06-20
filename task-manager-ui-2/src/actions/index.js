@@ -4,6 +4,7 @@ export const FETCH_TASKS = 'FETCH_TASKS';
 export const CREATE_TASK = 'CREATE_TASK';
 export const FETCH_TASK = 'FETCH_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
+export const CREATE_USER = 'CREATE_USER';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
@@ -52,6 +53,16 @@ export function createTask(values, callback) {
 
   return {
     type: CREATE_TASK,
+    payload: request
+  };
+}
+
+export function createUser(values, callback) {
+  const request = axios.post(`http://localhost:3003/users`, values)
+    .then(() => callback() );
+
+  return {
+    type: CREATE_USER,
     payload: request
   };
 }

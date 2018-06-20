@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var products = require('./routes/products');
 var tasks = require('./routes/tasks');
+// var users = require('./routes/users');
 
 // restful
 // var restful = require('node-restful');
@@ -23,6 +24,10 @@ mongoose.connect('mongodb://localhost/product')
   .catch((err) => console.error(err));
 
 mongoose.connect('mongodb://localhost/task')
+  .then(() =>  console.log('connection succesful'))
+  .catch((err) => console.error(err));
+
+mongoose.connect('mongodb://localhost/user')
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 

@@ -13,6 +13,7 @@ import TasksNew from './screens/tasks_new';
 import TaskShow from './screens/task_show';
 import PostsNew from './components/posts_new';
 import PostsShow from './components/post_show';
+import Register from './screens/register';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -28,6 +29,7 @@ ReactDOM.render(
             <Route path="/posts/:id" component={ PostsShow } />
             <Route path="/tasks/new" component={ TasksNew } />
             <Route path="/tasks/:id" component={ TaskShow } />
+            <Route path="/register" component={ Register } />
             <Route path="/" component={ TasksIndex } />
           </Switch>
         </div>

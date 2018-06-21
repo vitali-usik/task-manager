@@ -35,14 +35,6 @@ class TasksIndex extends Component {
     if (!this.props.tasks) { return; }
 
     let tasks = this.getTasks();
-    // console.log('!!', this.props.tasks);
-    // Object.keys(this.props.tasks).forEach((item) => {
-    //   if (!item) { return; }
-    //
-    //   if (this.props.tasks[item].task_user_id === this.props.user._id) {
-    //     tasks[item] = this.props.tasks[item];
-    //   }
-    // });
 
     return Object.keys(tasks).map((item, index)=> {
       return (

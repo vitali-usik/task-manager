@@ -26,7 +26,9 @@ class TasksNew extends Component {
   }
 
   onSubmit(values) {
-    values.task_user_id = this.props.user._id;
+    if (!values.task_user_id) {
+      values.task_user_id = this.props.user._id;
+    }
 
     this.props.createTask(values, () => {
       this.props.history.push('/');

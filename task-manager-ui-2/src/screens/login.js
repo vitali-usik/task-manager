@@ -48,7 +48,7 @@ class Login extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    console.log('this.props.users', this.props.users);
+
     return (
       <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
         {!this.isValidUser && (

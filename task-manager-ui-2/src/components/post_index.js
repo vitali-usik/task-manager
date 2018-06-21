@@ -30,10 +30,7 @@ class PostsIndex extends Component {
           </Link>
         </div>
         <h3>Posts</h3>
-        {/* <ul className="list-group">
-          { this.renderPosts() }
-        </ul> */}
-        {console.log(Object.keys(this.props.posts))}
+
         {Object.keys(this.props.posts).map((item) => {
           return (
             <div key={item}>
@@ -47,7 +44,6 @@ class PostsIndex extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state', state);
   return { posts: state.posts };
 }
 

@@ -30,6 +30,7 @@ export default function(state = {}, action) {
         users: action.payload.data,
       };
     case FETCH_TASKS:
+      // debugger
       return {
         ...state,
         tasks: action.payload.data,
@@ -37,9 +38,12 @@ export default function(state = {}, action) {
     case DELETE_POST:
       return _.omit(state, action.payload);
     case DELETE_TASK:
-      return Object.keys(state).filter((item) => {
-        return state[item]._id !== action.payload;
-      });
+      return {
+        ...state,
+        tasks: Object.keys(state.tasks).filter((item) => {
+          return state[item]._id !== action.payload;
+        })
+      };
     case FETCH_TASK:
       return { ...state, [action.payload.data._id]: action.payload.data };
     case FETCH_POST:

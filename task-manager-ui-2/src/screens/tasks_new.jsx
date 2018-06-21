@@ -26,6 +26,8 @@ class TasksNew extends Component {
   }
 
   onSubmit(values) {
+    values.task_user_id = this.props.user._id;
+
     this.props.createTask(values, () => {
       this.props.history.push('/');
     });
@@ -80,9 +82,13 @@ function validate(values) {
   return errors;
 }
 
+function mapStateToProps(state) {
+  return { user: state.tasks.currentUser };
+}
+
 export default reduxForm({
   validate,
   form: 'TasksNewForm'
 })(
-  connect(null, { createTask })(TasksNew)
+  connect(mapStateToProps, { createTask })(TasksNew)
 );

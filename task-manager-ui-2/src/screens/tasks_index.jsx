@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -6,6 +5,9 @@ import { fetchTasks, deleteTask } from '../actions';
 
 class TasksIndex extends Component {
   componentDidMount() {
+    if (!this.props.user) {
+      this.props.history.push('/login');
+    }
     this.props.fetchTasks();
   }
 
@@ -16,10 +18,33 @@ class TasksIndex extends Component {
     });
   };
 
+  getTasks() {
+    let tasks = {};
+    Object.keys(this.props.tasks).forEach((item) => {
+      if (!item) { return; }
+
+      if (this.props.tasks[item].task_user_id === this.props.user._id) {
+        tasks[item] = this.props.tasks[item];
+      }
+    });
+
+    return tasks;
+  }
+
   renderTasks() {
     if (!this.props.tasks) { return; }
 
-    return Object.keys(this.props.tasks).map((item, index)=> {
+    let tasks = this.getTasks();
+    // console.log('!!', this.props.tasks);
+    // Object.keys(this.props.tasks).forEach((item) => {
+    //   if (!item) { return; }
+    //
+    //   if (this.props.tasks[item].task_user_id === this.props.user._id) {
+    //     tasks[item] = this.props.tasks[item];
+    //   }
+    // });
+
+    return Object.keys(tasks).map((item, index)=> {
       return (
         <tr key={index}>
           <td className="taskTableIndex">{index + 1}</td>
@@ -51,8 +76,9 @@ class TasksIndex extends Component {
         {this.props.user && (
           <h1>Hello {this.props.user.user_name}</h1>
         )}
-        <table className="table">
-          <thead>
+        {this.props.tasks && Object.keys(this.getTasks()).length !== 0 ? (
+          <table className="table">
+            <thead>
             <tr>
               <th>#</th>
               <th>Name</th>
@@ -61,11 +87,15 @@ class TasksIndex extends Component {
               <th></th>
               <th></th>
             </tr>
-          </thead>
-          <tbody>
-          {this.renderTasks()}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+            {this.renderTasks()}
+            </tbody>
+          </table>
+        ) : (
+          <div>There are no tasks</div>
+        )}
+
       </div>
     );
   }
